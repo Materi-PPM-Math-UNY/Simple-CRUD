@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Math</string>
+    <string name="hint_nama">Ketik Nama</string>
+    <string name="hint_alamat">Ketik Alamat</string>
+    <string name="hint_hp">Ketik HP/Phone</string>
+    <string name="simpan">Simpan</string>
+</resources>
