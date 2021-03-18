@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < mhsList.size(); i++){
             ViewItemMhs viewItemMhs = new ViewItemMhs(this);
             viewItemMhs.setMhs(mhsList.get(i));
-            linMain.addView(viewItemMhs);
+            linMain.addView(viewItemMhs, 0);
         }
     }
 
