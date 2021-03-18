@@ -74,7 +74,7 @@ public class MhsParcel implements Parcelable {
         this.hp = hp;
     }
 
-    Mhs toMhs(){
+    public Mhs toMhs(){
         Mhs mhs = new Mhs();
         mhs.setId(id);
         mhs.setHp(hp);

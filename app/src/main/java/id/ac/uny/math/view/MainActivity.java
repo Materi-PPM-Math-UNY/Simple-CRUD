@@ -9,12 +9,22 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import id.ac.uny.math.R;
+import id.ac.uny.math.data.Mhs;
+import id.ac.uny.math.data.MhsParcel;
+
+import static id.ac.uny.math.MathApp.mathDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout linMain;
     FloatingActionButton btnAdd;
+
+    List<Mhs> mhsList = new ArrayList<>();
+    ViewItemMhs selectedViewMhs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +33,29 @@ public class MainActivity extends AppCompatActivity {
 
         intiviews();
         initaction();
+        initdata();
+    }
+
+    void initdata(){
+        mhsList = mathDatabase.getMhsDao().getMhs();
+        for (int i = 0; i < mhsList.size(); i++){
+            ViewItemMhs viewItemMhs = new ViewItemMhs(this);
+            viewItemMhs.setMhs(mhsList.get(i));
+
+            MhsParcel mhsParcel = mhsList.get(i).toParcel();
+
+            viewItemMhs.getBtnEdit().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectedViewMhs = viewItemMhs;
+                    Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                    intent.putExtra("mhs", mhsParcel);
+                    startActivityForResult(intent, 222);
+                }
+            });
+
+            linMain.addView(viewItemMhs);
+        }
     }
 
     void intiviews(){

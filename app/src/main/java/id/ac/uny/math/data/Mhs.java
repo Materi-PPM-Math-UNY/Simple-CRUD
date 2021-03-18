@@ -47,7 +47,7 @@ public class Mhs {
         this.hp = hp;
     }
 
-    MhsParcel toParcel(){
+    public MhsParcel toParcel(){
         MhsParcel mhsParcel = new MhsParcel();
         mhsParcel.setId(id);
         mhsParcel.setAlamat(alamat);
