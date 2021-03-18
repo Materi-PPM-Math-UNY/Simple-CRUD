@@ -78,6 +78,7 @@ public class MhsParcel implements Parcelable {
         Mhs mhs = new Mhs();
         mhs.setId(id);
         mhs.setHp(hp);
+        mhs.setNama(nama);
         mhs.setAlamat(alamat);
         return mhs;
     }

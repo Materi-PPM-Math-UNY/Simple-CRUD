@@ -51,6 +51,7 @@ public class Mhs {
         MhsParcel mhsParcel = new MhsParcel();
         mhsParcel.setId(id);
         mhsParcel.setAlamat(alamat);
+        mhsParcel.setNama(nama);
         mhsParcel.setHp(hp);
         return mhsParcel;
     }

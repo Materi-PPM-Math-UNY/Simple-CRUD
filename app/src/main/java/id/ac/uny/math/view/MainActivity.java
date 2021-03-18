@@ -1,9 +1,11 @@
 package id.ac.uny.math.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -20,11 +22,12 @@ import static id.ac.uny.math.MathApp.mathDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
+   public static int CRUD_REQ = 222;
+
     LinearLayout linMain;
     FloatingActionButton btnAdd;
 
     List<Mhs> mhsList = new ArrayList<>();
-    ViewItemMhs selectedViewMhs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +40,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void initdata(){
+        if (mathDatabase.getMhsDao().getMhs() == null) return;
+
         mhsList = mathDatabase.getMhsDao().getMhs();
+
+        linMain.removeAllViews();
         for (int i = 0; i < mhsList.size(); i++){
             ViewItemMhs viewItemMhs = new ViewItemMhs(this);
             viewItemMhs.setMhs(mhsList.get(i));
-
-            MhsParcel mhsParcel = mhsList.get(i).toParcel();
-
-            viewItemMhs.getBtnEdit().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    selectedViewMhs = viewItemMhs;
-                    Intent intent = new Intent(MainActivity.this, EditActivity.class);
-                    intent.putExtra("mhs", mhsParcel);
-                    startActivityForResult(intent, 222);
-                }
-            });
-
             linMain.addView(viewItemMhs);
         }
     }
@@ -68,8 +62,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, CRUD_REQ);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CRUD_REQ && resultCode == RESULT_OK){
+
+            boolean isNew = data.getBooleanExtra("isNew", false);
+            MhsParcel mhsParcel = data.getParcelableExtra("mhs");
+            Mhs mhs = mhsParcel.toMhs();
+
+            if (isNew){
+                mathDatabase.getMhsDao().insert(mhs);
+            } else {
+                mathDatabase.getMhsDao().update(mhs.getNama(), mhs.getAlamat(), mhs.getHp(), mhs.getId());
+            }
+            initdata();
+        }
     }
 }
