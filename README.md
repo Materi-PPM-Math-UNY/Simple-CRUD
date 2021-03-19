@@ -11,4 +11,4 @@ CRUD Database Sederhana menggunakan RoomDb
 - SQL dasar: insert, update.
 
 ## PR 😄
-- Search dan Delete. 
+- Lanjutkan sendiri untuk Search dan Delete. Insya Allah mudah. Pasti bisa 😎
