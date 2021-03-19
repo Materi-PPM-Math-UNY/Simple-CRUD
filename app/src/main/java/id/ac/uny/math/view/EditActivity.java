@@ -53,9 +53,13 @@ public class EditActivity extends AppCompatActivity {
 
     void initData(){
         if (mhsParcel != null) {
-            edtPhone.setText(mhsParcel.getHp());
             edtNama.setText(mhsParcel.getNama());
+            edtNama.requestFocus();
+            edtNama.setSelection(edtNama.getText().length());
+
+            edtPhone.setText(mhsParcel.getHp());
             edtAlamat.setText(mhsParcel.getAlamat());
+
         }
     }
 
@@ -86,10 +90,9 @@ public class EditActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
