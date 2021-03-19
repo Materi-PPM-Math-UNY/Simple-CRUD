@@ -7,3 +7,5 @@ CRUD Database Sederhana menggunakan RoomDb
 - Menampilkan data menggunakan LinearLayout dan ScrollView. 
 - Activity livecycle : OnCreate, OnActivityResult.
 - SQL dasar: insert, update, delete.
+
+<img width="400px" src="https://raw.githubusercontent.com/hangga/Math/main/device-2021-03-19-070447.png"/>
