@@ -11,20 +11,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import id.ac.uny.math.R;
-import id.ac.uny.math.data.Mhs;
+import id.ac.uny.math.data.MhsEntity;
 
 public class ViewItemMhs extends RelativeLayout {
-
     Context context;
     TextView txtHP;
     TextView txtNama;
     TextView txtAlamat;
     Button btnEdit;
-    Mhs mhs;
-
-    public Button getBtnEdit() {
-        return btnEdit;
-    }
+    MhsEntity mhsEntity;
 
     public ViewItemMhs(Context context) {
         super(context);
@@ -41,11 +36,19 @@ public class ViewItemMhs extends RelativeLayout {
         inflate(context);
     }
 
-    public void setMhs(Mhs mhs) {
-        this.mhs = mhs;
-        txtNama.setText(mhs.getNama());
-        txtAlamat.setText(mhs.getAlamat());
-        txtHP.setText(mhs.getHp());
+    public MhsEntity getMhsEntity() {
+        return mhsEntity;
+    }
+
+    public void setMhsEntity(MhsEntity mhsEntity) {
+        this.mhsEntity = mhsEntity;
+        txtNama.setText(mhsEntity.getNama());
+        txtAlamat.setText(mhsEntity.getAlamat());
+        txtHP.setText(mhsEntity.getHp());
+    }
+
+    public Button getBtnEdit() {
+        return btnEdit;
     }
 
     void inflate(Context context) {
@@ -61,8 +64,8 @@ public class ViewItemMhs extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, EditActivity.class);
-                intent.putExtra("mhs", mhs.toParcel());
-                ((Activity)context).startActivityForResult(intent, MainActivity.CRUD_REQ);
+                intent.putExtra("mhsEntity", mhsEntity.toParcel());
+                ((Activity) context).startActivityForResult(intent, MainActivity.CRUD_REQ);
             }
         });
     }

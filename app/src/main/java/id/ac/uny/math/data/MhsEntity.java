@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Mhs {
+public class MhsEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "nama")

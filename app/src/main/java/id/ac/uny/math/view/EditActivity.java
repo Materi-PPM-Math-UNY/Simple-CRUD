@@ -6,14 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import id.ac.uny.math.R;
+import id.ac.uny.math.data.MhsEntity;
 import id.ac.uny.math.data.MhsParcel;
+
+import static id.ac.uny.math.MathApp.mathDatabase;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -30,7 +32,7 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        mhsParcel = getIntent().getParcelableExtra("mhs");
+        mhsParcel = getIntent().getParcelableExtra("mhsEntity");
         isNew = (mhsParcel == null);
 
         initview();
@@ -68,8 +70,13 @@ public class EditActivity extends AppCompatActivity {
         mhsParcel.setHp(edtPhone.getText().toString());
         mhsParcel.setNama(edtNama.getText().toString());
         mhsParcel.setAlamat(edtAlamat.getText().toString());
-        Log.d("MATH", "CEK-MATH:"+mhsParcel.getNama());
-        Log.d("MATH", "CEK-MATH:"+mhsParcel.getAlamat());
+
+        MhsEntity mhsEntity = mhsParcel.toEntity();
+        if (isNew){
+            mathDatabase.getMhsDao().insert(mhsEntity);
+        } else {
+            mathDatabase.getMhsDao().update(mhsEntity.getNama(), mhsEntity.getAlamat(), mhsEntity.getHp(), mhsEntity.getId());
+        }
     }
 
     void initAction(){
@@ -80,7 +87,7 @@ public class EditActivity extends AppCompatActivity {
                 doSave();
 
                 Intent intent = getIntent();
-                intent.putExtra("mhs", mhsParcel);
+                intent.putExtra("mhsEntity", mhsParcel);
                 intent.putExtra("isNew", isNew);
                 setResult(RESULT_OK, intent);
                 finish();

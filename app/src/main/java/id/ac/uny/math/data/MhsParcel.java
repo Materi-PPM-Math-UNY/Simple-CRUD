@@ -74,12 +74,12 @@ public class MhsParcel implements Parcelable {
         this.hp = hp;
     }
 
-    public Mhs toMhs(){
-        Mhs mhs = new Mhs();
-        mhs.setId(id);
-        mhs.setHp(hp);
-        mhs.setNama(nama);
-        mhs.setAlamat(alamat);
-        return mhs;
+    public MhsEntity toEntity(){
+        MhsEntity mhsEntity = new MhsEntity();
+        mhsEntity.setId(id);
+        mhsEntity.setHp(hp);
+        mhsEntity.setNama(nama);
+        mhsEntity.setAlamat(alamat);
+        return mhsEntity;
     }
 }

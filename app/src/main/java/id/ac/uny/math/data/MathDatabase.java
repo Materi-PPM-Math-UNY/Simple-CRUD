@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 
 @Database(
         entities = {
-                Mhs.class  //Tambah entitas disini..
+                MhsEntity.class  //Tambah entity disini..
         },
         version = 1,
         exportSchema = false

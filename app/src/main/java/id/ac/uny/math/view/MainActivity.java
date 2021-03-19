@@ -1,13 +1,12 @@
 package id.ac.uny.math.view;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -15,19 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.uny.math.R;
-import id.ac.uny.math.data.Mhs;
+import id.ac.uny.math.data.MhsEntity;
 import id.ac.uny.math.data.MhsParcel;
 
 import static id.ac.uny.math.MathApp.mathDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-   public static int CRUD_REQ = 222;
+    public static int CRUD_REQ = 222;
 
     LinearLayout linMain;
     FloatingActionButton btnAdd;
 
-    List<Mhs> mhsList = new ArrayList<>();
+    List<MhsEntity> mhsEntityList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,29 +34,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         intiviews();
+        initViewData();
         initaction();
-        initdata();
     }
 
-    void initdata(){
-        if (mathDatabase.getMhsDao().getMhs() == null) return;
-
-        mhsList = mathDatabase.getMhsDao().getMhs();
-
-        linMain.removeAllViews();
-        for (int i = 0; i < mhsList.size(); i++){
-            ViewItemMhs viewItemMhs = new ViewItemMhs(this);
-            viewItemMhs.setMhs(mhsList.get(i));
-            linMain.addView(viewItemMhs, 0);
+    void updateView(MhsEntity mhsEntity) {
+        for (int i = 0; i < linMain.getChildCount(); i++) {
+            if (((ViewItemMhs) linMain.getChildAt(i)).getMhsEntity().getId() == mhsEntity.getId()) {
+                ((ViewItemMhs) linMain.getChildAt(i)).setMhsEntity(mhsEntity);
+                break;
+            }
         }
     }
 
-    void intiviews(){
+    void addViewData(MhsEntity mhsEntity) {
+        ViewItemMhs viewItemMhs = new ViewItemMhs(this);
+        viewItemMhs.setMhsEntity(mhsEntity);
+        linMain.addView(viewItemMhs, 0);
+    }
+
+    void initViewData() {
+        if (mathDatabase.getMhsDao().getMhs() == null) return;
+
+        mhsEntityList = mathDatabase.getMhsDao().getMhs();
+
+        linMain.removeAllViews();
+        for (int i = 0; i < mhsEntityList.size(); i++) {
+            addViewData(mhsEntityList.get(i));
+        }
+    }
+
+    void intiviews() {
         linMain = findViewById(R.id.linMain);
         btnAdd = findViewById(R.id.btnAdd);
     }
 
-    void initaction(){
+    void initaction() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,18 +83,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CRUD_REQ && resultCode == RESULT_OK){
+        if (requestCode == CRUD_REQ && resultCode == RESULT_OK) {
+            MhsParcel mhsParcel = data.getParcelableExtra("mhsEntity");
+            MhsEntity mhsEntity = mhsParcel.toEntity();
 
             boolean isNew = data.getBooleanExtra("isNew", false);
-            MhsParcel mhsParcel = data.getParcelableExtra("mhs");
-            Mhs mhs = mhsParcel.toMhs();
 
-            if (isNew){
-                mathDatabase.getMhsDao().insert(mhs);
+            if (isNew) {
+                addViewData(mhsEntity);
             } else {
-                mathDatabase.getMhsDao().update(mhs.getNama(), mhs.getAlamat(), mhs.getHp(), mhs.getId());
+                updateView(mhsEntity);
             }
-            initdata();
         }
     }
 }
