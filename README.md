@@ -12,3 +12,4 @@ Cakupan Materi
 
 ## PR 😄
 - Lanjutkan sendiri untuk Search dan Delete. Insya Allah mudah. Pasti bisa 😎
+- Push di repo Github kalian.
