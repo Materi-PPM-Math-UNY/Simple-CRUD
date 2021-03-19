@@ -11,5 +11,5 @@ Cakupan Materi
 - SQL dasar: insert, update.
 
 ## PR 😄
-- Lanjutkan sendiri untuk Search dan Delete. Insya Allah mudah. Pasti bisa 😎
+- Lanjutkan sendiri untuk **Search** dan **Delete**. Insya Allah mudah. Pasti bisa 😎
 - Push ke repositori GitHub kalian. Lalu kirim linknya ke Dosen pengampu.
