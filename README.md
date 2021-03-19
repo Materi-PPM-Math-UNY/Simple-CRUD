@@ -8,4 +8,5 @@ CRUD Database Sederhana menggunakan RoomDb
 - Activity livecycle : OnCreate, OnActivityResult.
 - SQL dasar: insert, update, delete.
 
-<img width="400px" src="https://raw.githubusercontent.com/hangga/Math/main/device-2021-03-19-070447.png"/>
+<img width="360px" src="https://raw.githubusercontent.com/hangga/Math/main/device-2021-03-19-070447.png"/>
+<img width="360px" src="https://raw.githubusercontent.com/hangga/Math/main/device-2021-03-19-070649.png"/>
