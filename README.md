@@ -12,4 +12,4 @@ Cakupan Materi
 
 ## PR 😄
 - Lanjutkan sendiri untuk Search dan Delete. Insya Allah mudah. Pasti bisa 😎
-- Push ke repositori GitHub kalian.
+- Push ke repositori GitHub kalian. Lalu kirim linknya ke Dosen pengampu.
