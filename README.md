@@ -4,6 +4,7 @@
 
 CRUD Database Sederhana menggunakan <a href="https://developer.android.com/training/data-storage/room" target="_blank">Room DB</a>    
 ## Download/Clone Project
+Silahkan clone ke local repository kalian :
 ```
 git clone https://github.com/hangga/Math-Simple-CRUD.git
 ```
