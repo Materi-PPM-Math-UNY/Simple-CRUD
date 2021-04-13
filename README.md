@@ -6,7 +6,7 @@ CRUD Database Sederhana menggunakan <a href="https://developer.android.com/train
 ## Download/Clone Project
 Silahkan clone ke local repository kalian :
 ```
-git clone https://github.com/hangga/Math-Simple-CRUD.git
+git clone https://github.com/Materi-PPM-Math-UNY/Simple-CRUD.git
 ```
 ## Cakupan Materi  
 - Memahami Intent dan passing data melalui Intent.
