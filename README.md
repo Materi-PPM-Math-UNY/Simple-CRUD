@@ -14,6 +14,8 @@ git clone https://github.com/Materi-PPM-Math-UNY/Simple-CRUD.git
 - Menampilkan data menggunakan LinearLayout dan ScrollView. 
 - Sekilas tentang Activity livecycle : OnCreate, OnActivityResult.
 - SQL dasar: insert, update.
+- Struktur Tabel
+- <img width="200" src="https://raw.githubusercontent.com/Materi-PPM-Math-UNY/Simple-CRUD/main/tabel.png"/>
 
 ## PR 😄
 - Lanjutkan sendiri untuk **Search** dan **Delete**.
