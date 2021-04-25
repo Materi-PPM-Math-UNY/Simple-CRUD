@@ -13,7 +13,7 @@ git clone https://github.com/Materi-PPM-Math-UNY/Simple-CRUD.git
 - Custom layout dasar: Inflating layout.
 - Menampilkan data menggunakan LinearLayout dan ScrollView. 
 - Sekilas tentang Activity livecycle : OnCreate, OnActivityResult.
-- SQL dasar: insert, update.
+- SQL dasar: insert, update & delete.   
  Adapun struktur tabelnya sebagai berikut:
  <img width="200" src="https://raw.githubusercontent.com/Materi-PPM-Math-UNY/Simple-CRUD/main/tabel.png"/>
 
