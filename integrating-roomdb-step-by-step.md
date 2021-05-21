@@ -1,13 +1,13 @@
 ## Integrasi Room Db
 
-- Install & Setup RoomDb
+### Install & Setup RoomDb
 	Buka Gradle, tambahkan 2 package id berikut ini pada dependencies
   ```
-  implementation "androidx.room:room-runtime:2.3.0"
-  annotationProcessor "androidx.room:room-compiler:2.3.0"
+  implementation "androidx.room:room###runtime:2.3.0"
+  annotationProcessor "androidx.room:room###compiler:2.3.0"
   ```
 
-- Membuat Pojo Entity beserta Parcelablenya(jika perlu)
+### Membuat Pojo Entity beserta Parcelablenya(jika perlu)
   ```
   @Entity
   public class MhsEntity {
@@ -22,7 +22,7 @@
     ...
     ...
   ```
-- Membuat DAOI(Data Access Object Interface)
+### Membuat DAOI(Data Access Object Interface)
   ```
   @Dao
   public interface MhsDao {
@@ -42,7 +42,7 @@
     ...
   }
   ```
-- Membuat Abstract Database.
+### Membuat Abstract Database.
 ```
 @Database(
         entities = {
@@ -55,7 +55,7 @@ public abstract class MathDatabase extends RoomDatabase {
         public abstract MhsDao getMhsDao();
 }
 ```
-- Membuat Main Class meng-extends dari Application.
+### Membuat Main Class meng###extends dari Application.
 ```
 public class MathApp extends Application {
 
@@ -64,12 +64,12 @@ public class MathApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mathDatabase = Room.databaseBuilder(getApplicationContext(), MathDatabase.class, "math-db")
+        mathDatabase = Room.databaseBuilder(getApplicationContext(), MathDatabase.class, "math###db")
                 .allowMainThreadQueries().build();
     }
 }
 ```
-- Change App Name pada manifest.
+### Change App Name pada manifest.
 ```
 <application
         android:name=".MathApp"
@@ -81,8 +81,8 @@ public class MathApp extends Application {
 ...
 ```
 View:
-- Membuat MainActivity dan LinearLayout untuk menampilkan isi tabel.
-- Membuat EditActivity untuk insert dan edit.
-- Membuat ViewItem
+### Membuat MainActivity dan LinearLayout untuk menampilkan isi tabel.
+### Membuat EditActivity untuk insert dan edit.
+### Membuat ViewItem
 
 
