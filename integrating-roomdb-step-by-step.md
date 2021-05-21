@@ -1,13 +1,13 @@
-## Integrasi Room Db
+## Integrasi Room Db untuk CRUD sederhana
 
-### Install & Setup RoomDb
+### 1. Gradle
 	Buka Gradle, tambahkan 2 package id berikut ini pada dependencies
   ```
   implementation "androidx.room:room###runtime:2.3.0"
   annotationProcessor "androidx.room:room###compiler:2.3.0"
   ```
 
-### Membuat Pojo Entity beserta Parcelablenya(jika perlu)
+### 2. Membuat Pojo Entity beserta Parcelablenya(jika perlu)
   ```
   @Entity
   public class MhsEntity {
@@ -22,7 +22,7 @@
     ...
     ...
   ```
-### Membuat DAOI(Data Access Object Interface)
+### 3. Membuat DAOI(Data Access Object Interface)
   ```
   @Dao
   public interface MhsDao {
@@ -42,7 +42,7 @@
     ...
   }
   ```
-### Membuat Abstract Database.
+### 4. Membuat Abstract Database.
 ```
 @Database(
         entities = {
@@ -55,7 +55,7 @@ public abstract class MathDatabase extends RoomDatabase {
         public abstract MhsDao getMhsDao();
 }
 ```
-### Membuat Main Class meng###extends dari Application.
+### 5. Membuat Main Class meng###extends dari Application.
 ```
 public class MathApp extends Application {
 
@@ -69,7 +69,7 @@ public class MathApp extends Application {
     }
 }
 ```
-### Change App Name pada manifest.
+### 6. Change App Name pada manifest.
 ```
 <application
         android:name=".MathApp"
@@ -81,8 +81,8 @@ public class MathApp extends Application {
 ...
 ```
 View:
-### Membuat MainActivity dan LinearLayout untuk menampilkan isi tabel.
-### Membuat EditActivity untuk insert dan edit.
-### Membuat ViewItem
+### 7. Membuat MainActivity dan LinearLayout untuk menampilkan isi tabel.
+### 8. Membuat EditActivity untuk insert dan edit.
+### 9. Membuat ViewItem
 
 
