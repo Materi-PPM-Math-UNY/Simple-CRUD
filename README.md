@@ -8,14 +8,17 @@ Silahkan clone ke local repository kalian :
 ```
 git clone https://github.com/Materi-PPM-Math-UNY/Simple-CRUD.git
 ```
+
 ## Cakupan Materi  
+- Panduan singkat integrasi RoomDb Step-by-step bisa kalian baca <a href="https://github.com/Materi-PPM-Math-UNY/Simple-CRUD/blob/main/integrating-roomdb-step-by-step.md">disini</a> yak.
 - Memahami Intent dan passing data melalui Intent.
 - Custom layout dasar: Inflating layout.
 - Menampilkan data menggunakan LinearLayout dan ScrollView. 
 - Sekilas tentang Activity livecycle : OnCreate, OnActivityResult.
 - SQL dasar: insert, update & delete.   
  Adapun struktur tabelnya sebagai berikut:
- <img width="200" src="https://raw.githubusercontent.com/Materi-PPM-Math-UNY/Simple-CRUD/main/tabel.png"/>
+ <img width="200" src="https://raw.githubusercontent.com/Materi-PPM-Math-UNY/Simple-CRUD/main/tabel.png"/>   
+
 
 ## PR 😄
 - Lanjutkan sendiri untuk **Search** dan **Delete**.
