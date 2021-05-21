@@ -1,10 +1,10 @@
 ## Integrasi Room Db untuk CRUD sederhana
 
 ### 1. Gradle
-	Buka Gradle, tambahkan 2 package id berikut ini pada dependencies
+Buka Gradle, tambahkan 2 package id berikut ini pada dependencies
   ```
-  implementation "androidx.room:room###runtime:2.3.0"
-  annotationProcessor "androidx.room:room###compiler:2.3.0"
+  implementation "androidx.room:room-runtime:2.3.0"
+  annotationProcessor "androidx.room:room-compiler:2.3.0"
   ```
 
 ### 2. Membuat Pojo Entity beserta Parcelablenya(jika perlu)
@@ -64,7 +64,7 @@ public class MathApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mathDatabase = Room.databaseBuilder(getApplicationContext(), MathDatabase.class, "math###db")
+        mathDatabase = Room.databaseBuilder(getApplicationContext(), MathDatabase.class, "math-db-1")
                 .allowMainThreadQueries().build();
     }
 }
